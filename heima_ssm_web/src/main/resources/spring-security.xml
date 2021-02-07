@@ -22,13 +22,12 @@
         <!-- 配置具体的拦截的规则 pattern="请求路径的规则" access="访问系统的人，必须有ROLE_USER的角色" -->
         <security:intercept-url pattern="/**" access="ROLE_USER,ROLE_ADMIN"/>
 
-        <!-- 定义跳转的具体的页面 -->
+        <!-- 定义跳转的具体的页面 login-processing-url="/login.do"-->
         <security:form-login
                 login-page="/login.jsp"
-                login-processing-url="/login.do"
+
                 default-target-url="/index.jsp"
                 authentication-failure-url="/failer.jsp"
-                authentication-success-forward-url="/pages/main.jsp"
         />
 
         <!-- 关闭跨域请求 -->
@@ -41,8 +40,8 @@
     <!-- 切换成数据库中的用户名和密码 -->
     <security:authentication-manager>
         <security:authentication-provider user-service-ref="userService">
-            <!-- 配置加密的方式
-            <security:password-encoder ref="passwordEncoder"/>-->
+            <!-- 配置加密的方式-->
+            <security:password-encoder ref="passwordEncoder"/>
         </security:authentication-provider>
     </security:authentication-manager>
 
