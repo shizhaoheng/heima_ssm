@@ -29,4 +29,20 @@ public class PermissionController {
         mv.setViewName("permission-list");
         return mv;
     }
+
+
+    @RequestMapping("/deletePermission")
+    public String deletePermission(String id) throws Exception {
+        permissionService.deleteById(id);
+        return "redirect:findAll.do";
+    }
+
+    @RequestMapping("/findById")
+    public ModelAndView findById(String id) throws Exception {
+        Permission permission=  permissionService.findById(id);
+        ModelAndView mv=new ModelAndView();
+        mv.setViewName("permission-show");
+        mv.addObject("permission",permission);
+        return mv;
+    }
 }

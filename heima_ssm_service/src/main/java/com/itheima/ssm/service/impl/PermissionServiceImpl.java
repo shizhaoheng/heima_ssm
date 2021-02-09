@@ -22,4 +22,16 @@ public class PermissionServiceImpl implements IPermissionService{
     public List<Permission> findAll() throws Exception{
         return permissionDao.findAll();
     }
+
+    @Override
+    public void deleteById(String id) throws Exception {
+        permissionDao.deleteFromRole_Permission(id);
+        permissionDao.deleteById(id);
+    }
+
+    @Override
+    public Permission findById(String id) throws Exception {
+        return permissionDao.findById(id);
+    }
+
 }
